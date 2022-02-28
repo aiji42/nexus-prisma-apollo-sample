@@ -2,6 +2,22 @@
 ### Do not make changes to this file directly
 
 
+type Post {
+  author: User
+  content: String
+  id: Int!
+  published: Boolean!
+  title: String!
+  viewCount: Int!
+}
+
 type Query {
-  ok: Boolean!
+  getPostById(id: Int!): Post
+  getUserByEmail(email: String!): User
+}
+
+type User {
+  email: String!
+  id: Int!
+  posts: [Post!]!
 }

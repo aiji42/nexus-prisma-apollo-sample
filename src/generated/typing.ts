@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-
+import type * as PrismaClient from ".prisma/client"
 import type { Context } from "./../context"
 
 
@@ -28,7 +28,9 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Post: PrismaClient.Post;
   Query: {};
+  User: PrismaClient.User;
 }
 
 export interface NexusGenInterfaces {
@@ -42,18 +44,54 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Post: { // field return type
+    author: NexusGenRootTypes['User'] | null; // User
+    content: string | null; // String
+    id: number; // Int!
+    published: boolean; // Boolean!
+    title: string; // String!
+    viewCount: number; // Int!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    getPostById: NexusGenRootTypes['Post'] | null; // Post
+    getUserByEmail: NexusGenRootTypes['User'] | null; // User
+  }
+  User: { // field return type
+    email: string; // String!
+    id: number; // Int!
+    posts: NexusGenRootTypes['Post'][]; // [Post!]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Post: { // field return type name
+    author: 'User'
+    content: 'String'
+    id: 'Int'
+    published: 'Boolean'
+    title: 'String'
+    viewCount: 'Int'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    getPostById: 'Post'
+    getUserByEmail: 'User'
+  }
+  User: { // field return type name
+    email: 'String'
+    id: 'Int'
+    posts: 'Post'
   }
 }
 
 export interface NexusGenArgTypes {
+  Query: {
+    getPostById: { // args
+      id: number; // Int!
+    }
+    getUserByEmail: { // args
+      email: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
