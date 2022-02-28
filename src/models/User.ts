@@ -1,4 +1,4 @@
-import { nonNull, objectType, queryField, stringArg } from "nexus";
+import { list, nonNull, objectType, queryField, stringArg } from "nexus";
 import * as Prisma from "nexus-prisma";
 
 export const User = objectType({
@@ -18,5 +18,12 @@ export const getUserByEmail = queryField("getUserByEmail", {
   },
   resolve: (parent, args, ctx) => {
     return ctx.prisma.user.findUnique({ where: { email: args.email } });
+  },
+});
+
+export const listUsers = queryField("listUsers", {
+  type: list(User),
+  resolve: (_, __, ctx) => {
+    return ctx.prisma.user.findMany();
   },
 });

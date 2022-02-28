@@ -55,6 +55,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     getPostById: NexusGenRootTypes['Post'] | null; // Post
     getUserByEmail: NexusGenRootTypes['User'] | null; // User
+    listUsers: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   User: { // field return type
     email: string; // String!
@@ -75,6 +76,7 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     getPostById: 'Post'
     getUserByEmail: 'User'
+    listUsers: 'User'
   }
   User: { // field return type name
     email: 'String'
