@@ -7,6 +7,8 @@
   "private": true,
   "scripts": {
     "generate": "prisma generate",
+    "build": "yarn generate && yarn tsc",
+    "start": "NODE_ENV=production node dist/index.js",
     "dev": "yarn generate && yarn dev:start",
     "dev:start": "ts-node-dev --no-notify --respawn --transpile-only src/index.ts"
   },
