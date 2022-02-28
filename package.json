@@ -5,11 +5,17 @@
   "author": "Aiji Uejima <aiji42@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "generate": "prisma generate"
+  },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^3.10.0"
+    "@prisma/client": "^3.10.0",
+    "graphql": "^16.3.0",
+    "nexus": "^1.2.0",
+    "nexus-prisma": "^0.35.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
