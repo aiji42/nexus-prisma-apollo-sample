@@ -1,0 +1,8 @@
+{
+  "name": "nexus-prisma-apollo-sample",
+  "version": "1.0.0",
+  "repository": "https://github.com/aiji42/nexus-prisma-apollo-sample.git",
+  "author": "Aiji Uejima <aiji42@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
