@@ -1,5 +1,23 @@
-version: '3'
+version: '3.4'
 services:
+  apollo:
+    build:
+      context: .
+      target: install
+      args:
+        - SKIP_DEV_DEPENDENCIES=false
+    entrypoint: /app/docker-entrypoint.sh
+    command: yarn dev
+    volumes:
+      - .:/app:cached
+    environment:
+      - DATABASE_URL=postgresql://postgres:root@db:5432/postgres
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
   db:
     image: postgres:13.4-alpine
     volumes:
